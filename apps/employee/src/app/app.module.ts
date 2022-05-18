@@ -15,22 +15,36 @@ import { RemoteDirectiveModule } from './directives/remote.directive.module';
     RouterModule.forRoot(
       [
         {
-          path: 'login',
-          loadChildren: () =>
-            loadRemoteModule('login', './Module').then(
-              (m) => m.RemoteEntryModule
-            ),
-        },
-        {
           path: '',
-          component: NxWelcomeComponent,
+          children: [
+            {
+              path: '',
+              loadChildren: () =>
+                loadRemoteModule('login', './Module').then(
+                  (m) => m.RemoteEntryModule
+                ),
+            },
+          ],
         },
         {
           path: 'todo',
-          loadChildren: () =>
-            loadRemoteModule('todo', './Module').then(
-              (m) => m.RemoteEntryModule
-            ),
+          children: [
+            {
+              path: '',
+              loadChildren: () =>
+                loadRemoteModule('login', './Module').then(
+                  (m) => m.RemoteEntryModule
+                ),
+            },
+            {
+              path: '',
+              loadChildren: () =>
+                loadRemoteModule('todo', './Module').then(
+                  (m) => m.RemoteEntryModule
+                ),
+              outlet: 'planner',
+            },
+          ],
         },
       ],
       { initialNavigation: 'enabledBlocking' }
