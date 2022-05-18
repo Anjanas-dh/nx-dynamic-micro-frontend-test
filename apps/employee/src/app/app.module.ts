@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { loadRemoteModule } from '@nrwl/angular/mfe';
+import { RemoteDirectiveModule } from './directives/remote.directive.module';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    RemoteDirectiveModule,
     RouterModule.forRoot(
       [
         {
