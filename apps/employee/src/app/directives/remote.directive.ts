@@ -25,18 +25,20 @@ export class RemoteDirective implements OnInit {
   async ngOnInit(): Promise<void> {
     console.log('directive ngOnInit');
 
-    const remoteModule = await loadRemoteModule('todo', './Module').then(
-      (m) => m.RemoteEntryModule
-    );
-    console.log('directive remoteModule', remoteModule);
-
-    const planBarModuleRef = createNgModuleRef(
-      remoteModule.RemoteEntryModule,
-      this.injector
-    );
-    this.viewContainerRef.createComponent(
-      remoteModule.RemoteEntryComponent,
-      planBarModuleRef
-    );
+    await loadRemoteModule('todo', './Module').then((m) => {
+      console.log('directive m:', m);
+      console.log('directive m Module:', m.RemoteEntryModule);
+      console.log('directive m Component', m.RemoteEntryComponent);
+      console.error('RemoteEntryComponent not defined');
+      // const planBarModuleRef = createNgModuleRef(
+      //   m.RemoteEntryModule,
+      //   this.injector
+      // );
+      // console.log('planBarModuleRef', planBarModuleRef);
+      // this.viewContainerRef.createComponent(
+      //   m.RemoteEntryComponent,
+      //   planBarModuleRef
+      // );
+    });
   }
 }
