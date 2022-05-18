@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'todo-entry',
-  template: `<dynamic-mfe-test-nx-welcome></dynamic-mfe-test-nx-welcome>`,
+  selector: 'dynamic-mfe-test-entry',
+  template: `<h1>I am the todo micro app</h1>`,
 })
 export class RemoteEntryComponent {}

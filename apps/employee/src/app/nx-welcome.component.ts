@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'dynamic-mfe-test-nx-welcome',
-  templateUrl: './nx-welcome.component.html',
+  template: '<h1>Welcome!</h1>',
   encapsulation: ViewEncapsulation.None,
 })
 export class NxWelcomeComponent implements OnInit {
